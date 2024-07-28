@@ -15,4 +15,5 @@ env/
 # Distribution / packaging
 .DS_Store
 dist/
-src/ds_service.egg-info/
+ds_service.egg-info
+
