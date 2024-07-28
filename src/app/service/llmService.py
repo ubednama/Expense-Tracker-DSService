@@ -4,10 +4,9 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_openai import ChatOpenAI
 from langchain_mistralai import ChatMistralAI
-
-from langchain_core.utils.function_calling import convert_to_openai_tool
+from langchain_google_vertexai import ChatVertexAI
+from app.schema.Expense import Expense
 import os
-from schema.Expense import Expense
 
 class LLMService:
     def __init__(self):
@@ -24,6 +23,7 @@ class LLMService:
         self.apiKey = os.getenv("OPENAI_API_KEY")
         self.llm = ChatMistralAI(api_key=self.apiKey, model="mistral-large-latest", temperature=0)
         # self.llm = ChatOpenAI(temperature=0)
+        # self.llm = ChatVertexAI(api_key=self.apiKey, model="gemini-1.5-flash-latest", temperature=0)
 
         self.runnable = self.prompt | self.llm.with_structured_output(schema=Expense)
     

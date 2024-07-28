@@ -11,3 +11,8 @@ __pycache__/
 # Virtual environment
 venv/
 env/
+
+# Distribution / packaging
+.DS_Store
+dist/
+src/ds_service.egg-info/
